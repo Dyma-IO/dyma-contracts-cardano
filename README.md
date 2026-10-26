@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/dyma-utxo-lockup-on-dark.svg">
-  <img src=".github/assets/dyma-utxo-lockup-orange.svg" alt="Dyma UTXO" width="300">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/dyma-utxo-lockup-on-dark-yellow.svg">
+  <img src=".github/assets/dyma-utxo-lockup-yellow.svg" alt="Dyma UTXO" width="300">
 </picture>
 
 <h3>Campaign reward escrow for Cardano</h3>
