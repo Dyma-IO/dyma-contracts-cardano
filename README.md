@@ -62,6 +62,9 @@ on chain whatever happens off chain:
   reserve and the whole ADA deposit.
 - **Same rules on every chain.** The rules and the math vectors are shared byte for byte with
   Dyma's CosmWasm escrow on Safrochain.
+- **Jobs pay only the hired worker.** Dyma Jobs, paid work posted outside campaigns, lock their
+  pay in `job_escrow`. A release needs Dyma's approval and the worker's own signature and splits
+  Dyma's fee on chain; the owner takes unused funds back, alone once the job expires.
 
 ## How a campaign works
 
@@ -125,6 +128,7 @@ flowchart LR
 | [`campaign_admin`](validators/campaign_admin.ak) | withdraw | pauses, ownership transfers, clock checkpoints | 10.6 KB |
 | [`campaign_shard`](validators/campaign_shard.ak) | spend | claim shards: claims and closes | 9.3 KB |
 | [`reputation`](validators/reputation.ak) | mint, spend | reputation badges (CIP-68): attested claims, upgrades, revocation, with their configuration | 5.6 KB |
+| [`job_escrow`](validators/job_escrow.ak) | mint, spend | Dyma Jobs: pay for a task or each period of an opportunity, released to the hired worker with Dyma's fee split on chain | 8.6 KB |
 
 For payouts and admin actions, `campaign_state` delegates to `campaign_payout` or `campaign_admin`
 through a zero-ADA withdrawal in the same transaction (the "withdraw zero" pattern). Campaign
@@ -220,6 +224,7 @@ The trust assumptions, the 16 threats with their mitigations and the residual ri
 │   ├── math.ak                  pro-rata payouts and fees
 │   ├── allocation.ak            hash-chained commits and claim shards
 │   ├── ticket.ak                ticket hashing, signature and rule checks
+│   ├── jobs.ak                  job escrow rules (Dyma Jobs)
 │   ├── types.ak                 on-chain data types (the blueprint's schemas)
 │   └── …                        auth, holdings, registry rules, text, time, constants, test kit
 ├── docs/                        specification, shared rules, threat model, runbook, audit scope
@@ -266,6 +271,11 @@ The largest transactions, as a share of the mainnet limits per transaction (16.5
 |---|---|---|---|
 | Preprod | deployed | [`f06ba45c…a90fe`](https://preprod.cardanoscan.io/tokenPolicy/f06ba45c6e2f4957b3002536ddcf66111d12191ba1962c3d2aae90fe) | [`deployments/preprod.reputation.json`](deployments/preprod.reputation.json) |
 | Mainnet | after preprod | | `deployments/mainnet.reputation.json` |
+
+| Job escrow | Status | Policy | Record |
+|---|---|---|---|
+| Preprod | deployed | [`4c97ca97…52860`](https://preprod.cardanoscan.io/tokenPolicy/4c97ca97dd722041c881a8ebd899789de58dba0b63fe7e4acb652860) | [`deployments/preprod.jobs.json`](deployments/preprod.jobs.json) |
+| Mainnet | after preprod | | `deployments/mainnet.jobs.json` |
 
 Each record lists the script hashes, their reference UTxOs and the registry
 ([format](deployments/README.md)). `scripts/deploy` deploys and verifies them; the procedure is in

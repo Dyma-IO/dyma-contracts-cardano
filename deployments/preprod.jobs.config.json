@@ -1,0 +1,15 @@
+{
+  "network": "preprod",
+  "governance": {
+    "required": 2,
+    "keys": [
+      "1862b21748edc9ee1bc77c2ab00924199095d50ac178f5bf36ee5557",
+      "8e478fa7613e25c3237ffd35a0d0ce43b8fcdd2ee5af0c43e07359d4",
+      "dbd619a6726df238a7d6ae4e2f47d357f26bbf60d8dc172a0fa3eac5"
+    ]
+  },
+  "attester": "ddccc6b80fe532016d076e94246ef170ef74cc3955093dbe5a14a49713c59e23",
+  "treasury": "addr_test1qzf0yt2drnjdhyfe7ahfjak8amvfq7ttrepjtcavvpykxr472f7pfm6wywlcql8df38aamygw6yuy0rhz58rcljelyzsapvz6g",
+  "max_fee_bps": 1000,
+  "paused": false
+}

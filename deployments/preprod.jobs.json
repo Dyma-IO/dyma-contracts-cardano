@@ -1,0 +1,40 @@
+{
+  "network": "preprod",
+  "status": "deployed",
+  "commit": "ca03428914b20353ea3fafb91c291c82d8f56c52",
+  "compiler": "v1.1.24+bacbeb3",
+  "seed": {
+    "tx_hash": "97f4f869d7a2a6a28c10250f3f73e792f6f38ace1a386d37e66c2e000e630df4",
+    "index": 2
+  },
+  "policy_id": "4c97ca97dd722041c881a8ebd899789de58dba0b63fe7e4acb652860",
+  "address": "addr_test1wpxf0j5hm4ezqswgsx5whkye0zw7trd6pd3lulj2edjjscqvxdgcc",
+  "size": 8638,
+  "config_utxo": {
+    "tx_hash": "6ff96d5f421ebd40b86472bc100dc349370db671aeefcfcd5d97b3889166e31c",
+    "index": 0
+  },
+  "reference": {
+    "tx_hash": "08fba9c9aaa493d55911297ce9c6a1c0c577ccaa00db7c5776a54222f3793a86",
+    "index": 0
+  },
+  "configuration": {
+    "network": "preprod",
+    "governance": {
+      "required": 2,
+      "keys": [
+        "1862b21748edc9ee1bc77c2ab00924199095d50ac178f5bf36ee5557",
+        "8e478fa7613e25c3237ffd35a0d0ce43b8fcdd2ee5af0c43e07359d4",
+        "dbd619a6726df238a7d6ae4e2f47d357f26bbf60d8dc172a0fa3eac5"
+      ]
+    },
+    "attester": "ddccc6b80fe532016d076e94246ef170ef74cc3955093dbe5a14a49713c59e23",
+    "treasury": "addr_test1qzf0yt2drnjdhyfe7ahfjak8amvfq7ttrepjtcavvpykxr472f7pfm6wywlcql8df38aamygw6yuy0rhz58rcljelyzsapvz6g",
+    "max_fee_bps": 1000,
+    "paused": false
+  },
+  "transactions": {
+    "config": "6ff96d5f421ebd40b86472bc100dc349370db671aeefcfcd5d97b3889166e31c",
+    "reference": "08fba9c9aaa493d55911297ce9c6a1c0c577ccaa00db7c5776a54222f3793a86"
+  }
+}

@@ -21,6 +21,10 @@ keep the version they were created with.
   a one-shot configuration (governance, Ed25519 attester, tiers), claims from single-use attestations
   signed by Dyma and the owner, upgrades that retire the older badge, revocation by governance.
   22 tests. `scripts/deploy/deploy-reputation.mjs` deploys it.
+- `job_escrow`: Dyma Jobs escrow. Pay for a task or for each period of an opportunity is locked per
+  job and released to the hired worker with Dyma's approval and the worker's signature, Dyma's fee
+  split on chain; the owner withdraws unused funds with Dyma's approval, or alone after expiry.
+  55 tests. `scripts/deploy/deploy-jobs.mjs` deploys it.
 
 ### Changed
 

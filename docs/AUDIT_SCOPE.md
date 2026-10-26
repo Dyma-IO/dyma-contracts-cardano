@@ -36,9 +36,10 @@ Line counts exclude blank lines and comments, and include in-file tests.
 | `lib/dyma/registry_rules.ak` | 94 | registry validity, role separation, privileged keys |
 | `lib/dyma/auth.ak`, `time.ak`, `phase.ak`, `text.ak`, `constants.ak` | 221 | signatures and multisigs, validity ranges, phases, text checks, hard limits |
 | `validators/reputation.ak`, `lib/dyma/badge.ak` | 360 | reputation badges (CIP-68): configuration NFT, attested claims, retirement of older badges, revocation |
+| `validators/job_escrow.ak`, `lib/dyma/jobs.ak` | 563 | Dyma Jobs escrow: configuration NFT, jobs funded from tickets, approved assignments, releases with the fee split, withdrawals, the owner's reclaim after expiry |
 | `plutus.json`, `aiken.toml`, `aiken.lock` | | blueprint, compiler and dependency pins |
 
-Total: 3,024 lines (459 in validators, 2,565 in `lib/dyma`).
+Total: 3,587 lines (765 in validators, 2,822 in `lib/dyma`).
 
 Supporting material, lower priority: the deployment procedure ([RUNBOOK §3](RUNBOOK.md#3-deploying))
 and the deployment records (`deployments/`).
