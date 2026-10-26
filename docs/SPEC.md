@@ -219,3 +219,45 @@ the boost a distribution applies comes from Dyma's records, as on Cosmos.
 Differences from the CosmWasm contract: a claim cannot burn a user token held in someone else's
 wallet, so the older user token stays as an orphan without a reference; `revoke_badge` burns the
 reference (unused attestations of the account expire within 15 minutes); there is no IBC bridge.
+
+## 11. Job escrow (Dyma Jobs)
+
+`validators/job_escrow.ak` (with `lib/dyma/jobs.ak`) holds the pay of jobs: paid work a project
+posts outside its campaigns, either one task or an opportunity paid every period. One script,
+parameterised by a seed output, is the job tokens' policy id and the address that holds the
+configuration and every job UTxO (8.6 KB). It does not use the campaign registry.
+
+| Datum | Holder | Content |
+|---|---|---|
+| `JobsConfig` | the UTxO with the `dyma-jobs` NFT | governance multisig, `attester` (32-byte Ed25519), `treasury` (receives Dyma's fee), `max_fee_bps` (at most 1 000), `paused` |
+| `JobState` | a job UTxO (token `"J" ++ key`, key = `blake2b_224(serialise_data(seed))`) | `job_id`, `key`, `owner` (credential and refund address), `asset`, `reward` (one task or one period), `fee_bps`, `fee_on_top`, `worker` (optional payment key), `deposit` (lovelace), `expires_at`, `nonce`, `released`, `fees_paid` |
+
+A job UTxO holds exactly its token, its pool and `deposit` lovelace. Dyma signs with Ed25519 over
+`blake2b_256(serialise_data(x))`:
+- a `JobTicket` (every parameter of a new job, its `seed`, `issued_at` and `valid_until`);
+- a `JobApproval { version, policy, key, nonce, action, issued_at, valid_until }` with
+  `action` one of `AssignWorker { worker }`, `ReleasePay { gross, close }`,
+  `WithdrawFunds { amount, close }`.
+
+Both are fresh: issued at most 10 minutes after the transaction's lower bound, valid past its
+upper bound, and live at most one day. An approval names the job's current `nonce`, and every
+approved action increments it, so each approval works once.
+
+| Redeemer | Who | Effect |
+|---|---|---|
+| mint `Init` | whoever spends the seed | the configuration NFT, once, into a valid configuration at the script |
+| mint `Create { ticket, signature }` | the ticket's owner | not paused; the attester's signature; `policy` is this script; the seed is spent; `fee_bps ≤ max_fee_bps`; deposit ≥ 2 ADA; the worker, if any, is neither the owner nor the treasury; output 0 is the job with the initial `JobState` and a pool ≥ `min_funding` |
+| mint `Burn` | spends that close a job | burning only, never the configuration NFT |
+| spend `TopUp { expires_at }` | the owner | the pool grows or stays; `expires_at` never decreases; output 0 continues the job |
+| spend `Approved` with `AssignWorker` | the owner and Dyma | not paused; output 0 continues with the new `worker`, the same value |
+| spend `Approved` with `ReleasePay` | the worker and Dyma | not paused; fee = `floor(gross × fee_bps / 10 000)`; the worker receives `gross` (fee on top) or `gross − fee`; output 0 pays the worker's payment key, output 1 the treasury (when the fee is not zero), then the job continues, or with `close` the pool is empty, the token burns and the owner gets the deposit |
+| spend `Approved` with `WithdrawFunds` | the owner and Dyma | not paused; output 0 pays the owner the amount (and the deposit with `close`, which needs an empty pool and burns the token); otherwise output 1 continues the job |
+| spend `Reclaim` | the owner alone, after `expires_at` | output 0 returns the pool and the deposit; the token burns; works while paused |
+| spend `UpdateConfig` | governance (and a new governance) | any valid configuration; the NFT stays at the script |
+| spend `Rescue` | governance | outputs at the address without a job token or the configuration NFT |
+
+Every action on a job spends exactly one input of this script, and outputs are checked by
+position, so no output can satisfy two jobs. Dyma alone can only pay the hired worker, and only
+with the worker's signature; the owner alone cannot take approved pay back before `expires_at`;
+after it, the owner can take everything back without Dyma.
+

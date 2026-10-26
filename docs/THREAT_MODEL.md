@@ -65,6 +65,12 @@ Procedures: [RUNBOOK.md](RUNBOOK.md). **No external audit yet**: this document i
 | T18 | A badge passed on to another wallet keeps counting | a badge counts only while its user token sits with the reference's `owner` (payment key); moving it voids it |
 | T19 | Several references for one account | readers take the highest nonce; a newer claim can retire older references in the same transaction; governance can revoke any |
 
+| T20 | A compromised job attester key drains job escrows | releases pay only the worker named in the job datum and need the worker's signature; a new worker needs the owner's signature too; governance pauses every approved action while `Reclaim` keeps working |
+| T21 | An owner takes approved pay back before the worker claims | withdrawals need Dyma's approval, which the API grants only for funds no approved, submitted or disputed period needs; the owner alone can reclaim only after `expires_at` |
+| T22 | An old approval replayed after the job moved on | approvals name the job's nonce, which every approved action increments; they live at most one day |
+| T23 | One output pays for two jobs | an action spends exactly one job input; outputs are positional |
+| T24 | A forged job UTxO | the job token is minted only by `Create` with a ticket signed by the attester, into output 0 with the exact initial state and value |
+
 ## 4. Residual risks
 
 - Unaudited code: canary amounts only until an external audit.
