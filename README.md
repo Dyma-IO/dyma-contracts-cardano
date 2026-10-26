@@ -274,7 +274,7 @@ The largest transactions, as a share of the mainnet limits per transaction (16.5
 
 | Job escrow | Status | Policy | Record |
 |---|---|---|---|
-| Preprod | to deploy | | `deployments/preprod.jobs.json` |
+| Preprod | deployed | [`4c97ca97…52860`](https://preprod.cardanoscan.io/tokenPolicy/4c97ca97dd722041c881a8ebd899789de58dba0b63fe7e4acb652860) | [`deployments/preprod.jobs.json`](deployments/preprod.jobs.json) |
 | Mainnet | after preprod | | `deployments/mainnet.jobs.json` |
 
 Each record lists the script hashes, their reference UTxOs and the registry
