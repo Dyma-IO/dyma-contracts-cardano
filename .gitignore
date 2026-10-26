@@ -1,0 +1,7 @@
+# Aiken compilation artifacts
+artifacts/
+# Aiken's project working directory
+build/
+# `aiken docs` output (the hand-written docs live in docs/)
+api-docs/
+node_modules/

@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aiken-lang/setup-aiken@v1
+        with:
+          version: v1.1.24
+      - run: aiken fmt --check
+      - run: aiken check -D
+      - name: Shared math vectors are the generated tests
+        run: python3 scripts/gen-math-vectors.py --check
+      - name: Execution budgets
+        run: python3 scripts/test-report.py -t silent -m budget
+      - name: The committed blueprint is the build
+        run: |
+          aiken build --trace-level silent
+          git diff --exit-code plutus.json

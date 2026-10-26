@@ -1,0 +1,23 @@
+name = "dyma-io/dyma-contracts-cardano"
+version = "0.1.0"
+compiler = "v1.1.24"
+plutus = "v3"
+license = "MIT"
+description = "Dyma UTXO smart contracts for Cardano: campaign reward escrow, its registry and the reputation badge"
+
+[repository]
+user = "Dyma-IO"
+project = "dyma-contracts-cardano"
+platform = "github"
+
+[[dependencies]]
+name = "aiken-lang/stdlib"
+version = "v4.0.0"
+source = "github"
+
+[[dependencies]]
+name = "aiken-lang/fuzz"
+version = "v3.0.0"
+source = "github"
+
+[config]
