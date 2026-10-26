@@ -11,7 +11,7 @@
   "address": "addr_test1wrcxhfzudch5j4anqqjndhw0vcg36yserwsevtpa92hfplsx6xc3t",
   "size": 5606,
   "config_utxo": {
-    "tx_hash": "0366ead8829635b7dadb7249bab2e106a4c709e120f6cd37f11ec82870f4fb5e",
+    "tx_hash": "fd12de9897f2f69297c343a323150e712e734963fce6197f0543d5161a26c94c",
     "index": 0
   },
   "reference": {
@@ -38,54 +38,57 @@
         "name": "Explorer",
         "min_score": 250,
         "boost_bps": 10500,
-        "image": "https://api.dymautxo.io/v1/reputation/badges/explorer.svg"
+        "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/explorer.png"
       },
       {
         "tier": 2,
         "name": "Contributor",
         "min_score": 1000,
         "boost_bps": 11000,
-        "image": "https://api.dymautxo.io/v1/reputation/badges/contributor.svg"
+        "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/contributor.png"
       },
       {
         "tier": 3,
         "name": "Builder",
         "min_score": 3000,
         "boost_bps": 12000,
-        "image": "https://api.dymautxo.io/v1/reputation/badges/builder.svg"
+        "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/builder.png"
       },
       {
         "tier": 4,
         "name": "Trailblazer",
         "min_score": 7500,
         "boost_bps": 13500,
-        "image": "https://api.dymautxo.io/v1/reputation/badges/trailblazer.svg"
+        "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/trailblazer.png"
       },
       {
         "tier": 5,
         "name": "Champion",
         "min_score": 15000,
         "boost_bps": 15000,
-        "image": "https://api.dymautxo.io/v1/reputation/badges/champion.svg"
+        "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/champion.png"
       },
       {
         "tier": 6,
         "name": "Legend",
         "min_score": 30000,
         "boost_bps": 17500,
-        "image": "https://api.dymautxo.io/v1/reputation/badges/legend.svg"
+        "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/legend.png"
       },
       {
         "tier": 7,
         "name": "Mythic",
         "min_score": 60000,
         "boost_bps": 20000,
-        "image": "https://api.dymautxo.io/v1/reputation/badges/mythic.svg"
+        "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/mythic.png"
       }
     ]
   },
   "transactions": {
     "config": "0366ead8829635b7dadb7249bab2e106a4c709e120f6cd37f11ec82870f4fb5e",
-    "reference": "ca454fcaa7225ca9a7968ddec7819027984f17b4c8a7faebef9adad091bfcf3a"
+    "reference": "ca454fcaa7225ca9a7968ddec7819027984f17b4c8a7faebef9adad091bfcf3a",
+    "config_updates": [
+      "fd12de9897f2f69297c343a323150e712e734963fce6197f0543d5161a26c94c"
+    ]
   }
 }
