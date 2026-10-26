@@ -1,0 +1,124 @@
+{
+  "network": "preprod",
+  "status": "deployed",
+  "commit": "6f56695f0e981756bd1358d19a5624a00da037a5",
+  "compiler": "v1.1.24+bacbeb3",
+  "seed": {
+    "tx_hash": "3d8344eff37c297060d634b47132fb94588976dd7c05077b7db6b78c975a21a7",
+    "index": 0
+  },
+  "registry": {
+    "policy_id": "097c165513145549ec3d36549c6b2c0f46ecf19d4c726d10eefa0a97",
+    "address": "addr_test1wqyhc9j4zv292j0v85m9f8rt9s85dm83n4x8ymgsamaq49cmyrhrh",
+    "utxo": {
+      "tx_hash": "b81cfc28f7c9ac8407955e94c3fe19563fb247b6fa473b6791b1d9a5b9aa2611",
+      "index": 0
+    }
+  },
+  "scripts": {
+    "registry": {
+      "hash": "097c165513145549ec3d36549c6b2c0f46ecf19d4c726d10eefa0a97",
+      "size": 5991,
+      "address": "addr_test1wqyhc9j4zv292j0v85m9f8rt9s85dm83n4x8ymgsamaq49cmyrhrh",
+      "reference": {
+        "tx_hash": "468371457df5c0db1eeee83f808fb9788287f33e77410e594df88600b922c2c1",
+        "index": 0
+      }
+    },
+    "campaign_policy": {
+      "hash": "27d9f6b54b546f3d3445675e5c8f2fd1a89f7c07d7608f658a635c26",
+      "size": 5586,
+      "reference": {
+        "tx_hash": "1793c60ea65d91da711981cea3c4b821baf62940f5465042f7db400c15c4ac8e",
+        "index": 0
+      }
+    },
+    "campaign_state": {
+      "hash": "2cca21c453a87cb4bfa256ee47f254c23118d021dfede459470aa06f",
+      "size": 14734,
+      "address": "addr_test1wqkv5gwy2w58ed9l5ftwu3lj2nprzxxsy807mezegu92qmc07805u",
+      "reference": {
+        "tx_hash": "873b101bcafcc8b5bf06a8e8fcf38d7fdebae47aa548e035d8b95cefb938d048",
+        "index": 0
+      }
+    },
+    "campaign_payout": {
+      "hash": "6a2f5f0916151863e645c77115a3f25559de6ba4e0ac7fef450667be",
+      "size": 13228,
+      "reward_address": "stake_test17p4z7hcfzc23sclxghrhz9dr7f24nhnt5ns2cll0g5rx00spdxj02",
+      "reference": {
+        "tx_hash": "2eca0f9944419904949c2787a3854917f1ac11ced8c589c810282bda1de72c39",
+        "index": 0
+      }
+    },
+    "campaign_admin": {
+      "hash": "6adb880c11fce51c0820465b4abf275aa9bab35943ef1b72c9514577",
+      "size": 10743,
+      "reward_address": "stake_test17p4dhzqvz87w28qgypr9kj4lyad2nw4nt9p77xmje9g52acxy3l9l",
+      "reference": {
+        "tx_hash": "64c334b89d09b2b6746caca1dab887e35dcc5336b093f66ca12f10b06c41c24e",
+        "index": 0
+      }
+    },
+    "campaign_shard": {
+      "hash": "05d153f53b3bfb2db4c0874c66b73ca3c9f9d07ebdc74d427bcf8e1b",
+      "size": 9327,
+      "address": "addr_test1wqzaz5l48valktd5czr5ce4h8j3un7ws067uwn2z008cuxc4f3tvf",
+      "reference": {
+        "tx_hash": "a4c7a4d193540515430531bcedb330ae821796da4dd4d9594419331c2604cba5",
+        "index": 0
+      }
+    }
+  },
+  "escrow": {
+    "policy": "27d9f6b54b546f3d3445675e5c8f2fd1a89f7c07d7608f658a635c26",
+    "state": "2cca21c453a87cb4bfa256ee47f254c23118d021dfede459470aa06f",
+    "shard": "05d153f53b3bfb2db4c0874c66b73ca3c9f9d07ebdc74d427bcf8e1b"
+  },
+  "configuration": {
+    "network": "preprod",
+    "governance": {
+      "required": 2,
+      "keys": [
+        "1862b21748edc9ee1bc77c2ab00924199095d50ac178f5bf36ee5557",
+        "8e478fa7613e25c3237ffd35a0d0ce43b8fcdd2ee5af0c43e07359d4",
+        "dbd619a6726df238a7d6ae4e2f47d357f26bbf60d8dc172a0fa3eac5"
+      ]
+    },
+    "guardian": {
+      "required": 2,
+      "keys": [
+        "fc7744c31d70da3ec5f2cecff20de0ff0452b45e22d2f103dd6bf185",
+        "37f5c2c2ce314ecfd04a602b0ff7b13dc8735d66c4cf9a371b647e1a",
+        "cc7d1edcbf1ba28ab58d80205d81404fae1d2f5ea840fac6261ddb45"
+      ]
+    },
+    "operator": "b2cf19b3109268fc3bd44f5250b2cd7da5a93d9a9e9c7b8ce0b239f5",
+    "pauser": "553ab0107a4ff8a1a16981e57af9bd5112738ef4e1130135f581fc6d",
+    "ticket_key": "31c9a648d3d4eb27ca1943dda7e972c735736d7b3e5111a4e472fe9b5c6ed6bf",
+    "treasury": "addr_test1qzf0yt2drnjdhyfe7ahfjak8amvfq7ttrepjtcavvpykxr472f7pfm6wywlcql8df38aamygw6yuy0rhz58rcljelyzsapvz6g",
+    "max_fee_bps": 1000,
+    "limits": {
+      "min_challenge_secs": 300,
+      "max_challenge_secs": 604800,
+      "min_commit_window_secs": 600,
+      "max_commit_window_secs": 7776000,
+      "min_recommit_secs": 300,
+      "min_claim_window_secs": 600,
+      "max_claim_window_secs": 31536000,
+      "dispute_timeout_secs": 900,
+      "max_pause_secs": 3600,
+      "max_commit_batch": 100
+    }
+  },
+  "transactions": {
+    "registry": "b81cfc28f7c9ac8407955e94c3fe19563fb247b6fa473b6791b1d9a5b9aa2611",
+    "reference_registry": "468371457df5c0db1eeee83f808fb9788287f33e77410e594df88600b922c2c1",
+    "reference_campaign_policy": "1793c60ea65d91da711981cea3c4b821baf62940f5465042f7db400c15c4ac8e",
+    "reference_campaign_state": "873b101bcafcc8b5bf06a8e8fcf38d7fdebae47aa548e035d8b95cefb938d048",
+    "reference_campaign_payout": "2eca0f9944419904949c2787a3854917f1ac11ced8c589c810282bda1de72c39",
+    "reference_campaign_admin": "64c334b89d09b2b6746caca1dab887e35dcc5336b093f66ca12f10b06c41c24e",
+    "reference_campaign_shard": "a4c7a4d193540515430531bcedb330ae821796da4dd4d9594419331c2604cba5",
+    "reward_accounts": "cbd1f141d6125517fc79a5193534a8076d6cf253a8f041d3f03009359a1d4115"
+  }
+}

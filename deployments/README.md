@@ -49,6 +49,7 @@ Written by the deployment and committed:
 | Field | Content |
 |---|---|
 | `network` | `preprod` or `mainnet` |
+| `status` | `in progress` while steps remain, then `deployed` |
 | `commit`, `compiler` | the repository commit and Aiken version that built `plutus.json` |
 | `seed` | the output reference that parameterises the registry (spent when its NFT is minted) |
 | `registry` | policy id (also the registry script hash), address and current UTxO |
@@ -57,5 +58,7 @@ Written by the deployment and committed:
 | `configuration` | the registry datum as deployed (the configuration above) |
 | `transactions` | the hash of every deployment transaction |
 
-Before Dyma's API is pointed at a record, the deployment reads everything back from the chain:
-the scripts by hash and the registry datum field by field.
+Records are written by [`scripts/deploy/deploy.mjs`](../scripts/deploy/deploy.mjs). Before Dyma's
+API is pointed at a record, [`scripts/deploy/verify.mjs`](../scripts/deploy/verify.mjs) reads
+everything back from the chain: the script hashes against the recorded commit's blueprint, the
+reference scripts, the registry UTxO and its datum, and the reward accounts.

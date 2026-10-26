@@ -8,3 +8,15 @@
 
 Use `-t silent` to measure budgets as deployed: traces add code and cost. The CI budget gate
 is `python3 scripts/test-report.py -t silent -m budget`.
+
+## Deployment
+
+[`deploy/`](deploy) is a small Node.js project (Mesh 1.9.1, Koios' public API). Install it with
+`npm ci` in that folder.
+
+| Script | Purpose |
+|---|---|
+| [`deploy/deploy.mjs`](deploy/deploy.mjs) | Deploys the registry, the reference scripts and the reward accounts, and writes `deployments/<network>.json`. `--plan` submits nothing. A re-run resumes an interrupted deployment. |
+| [`deploy/verify.mjs`](deploy/verify.mjs) | Reads a deployment back from the chain and checks it against its record. |
+
+The procedure is in [RUNBOOK §3](../docs/RUNBOOK.md#3-deploying).

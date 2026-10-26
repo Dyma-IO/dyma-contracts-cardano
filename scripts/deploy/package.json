@@ -1,0 +1,17 @@
+{
+  "name": "dyma-contracts-cardano-deploy",
+  "private": true,
+  "description": "Deploys the Dyma escrow on Cardano and verifies a deployment (docs/RUNBOOK.md)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "plan": "node deploy.mjs --plan",
+    "deploy": "node deploy.mjs",
+    "verify": "node verify.mjs"
+  },
+  "dependencies": {
+    "@meshsdk/core": "1.9.1"
+  }
+}

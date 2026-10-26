@@ -14,6 +14,9 @@ keep the version they were created with.
 
 - Project documentation: contributing guide, security policy, code of conduct, this changelog, a
   documentation index, the audit scope, and issue and pull request templates.
+- `scripts/deploy`: a resumable deployment (registry, reference scripts, reward accounts) and a
+  verification that reads everything back from the chain.
+- Preprod deployment of 0.1.0 (`deployments/preprod.json`).
 
 ### Changed
 

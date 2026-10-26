@@ -50,16 +50,28 @@ Preprod costs the same in test ADA (Cardano faucet, 10 000 tADA per request).
    `campaign_shard(registry, policy)`, `campaign_payout(registry, policy, shard)`,
    `campaign_admin(registry, policy, shard)`, `campaign_state(registry, policy, shard, payout,
    admin)`.
-4. **Reference scripts**: one transaction per script, each output at the registry address carrying
-   the script.
-5. **Reward accounts**: one transaction registers the reward accounts of `campaign_payout` and
+4. **Registry**: the first transaction spends the seed, mints the registry NFT and creates the
+   registry UTxO with the configuration (escrow: policy, state and shard script hashes). It carries
+   the registry script itself, since no reference exists yet.
+5. **Reference scripts**: one transaction per script, each output at the registry address carrying
+   the script. Only governance can move them (with an `UpdateConfig`).
+6. **Reward accounts**: one transaction registers the reward accounts of `campaign_payout` and
    `campaign_admin`.
-6. **Registry**: one transaction spends the seed, mints the registry NFT and creates the registry
-   UTxO with the configuration (escrow: policy, state and shard script hashes).
 7. **Record**: `deployments/<network>.json` gets the network, the seed, every script hash and
-   reference UTxO, the registry UTxO and the configuration; it is committed.
+   reference UTxO, the registry UTxO and the configuration, after each confirmed step (a re-run
+   resumes where the last one stopped); it is committed.
 8. **Verify**: read everything back from the chain (scripts by hash, registry datum field by field)
    before Dyma's API is pointed at the record.
+
+```bash
+cd scripts/deploy && npm ci
+node deploy.mjs --network preprod --wallet <deployer mnemonic file> --plan   # nothing submitted
+node deploy.mjs --network preprod --wallet <deployer mnemonic file>
+node verify.mjs --network preprod
+```
+
+`--plan` prints the script hashes, addresses and deposits, and has a node evaluate the registry
+transaction. On mainnet, the deployment also needs `--confirm-mainnet`.
 
 ## 4. Operating
 

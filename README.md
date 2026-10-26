@@ -255,13 +255,14 @@ The largest transactions, as a share of the mainnet limits per transaction (16.5
 
 ## Deployments
 
-| Network | Status | Record |
-|---|---|---|
-| Preprod | in preparation | `deployments/preprod.json` |
-| Mainnet | after preprod | `deployments/mainnet.json` |
+| Network | Status | Registry policy | Record |
+|---|---|---|---|
+| Preprod | deployed | [`097c1655…0a97`](https://preprod.cardanoscan.io/tokenPolicy/097c165513145549ec3d36549c6b2c0f46ecf19d4c726d10eefa0a97) | [`deployments/preprod.json`](deployments/preprod.json) |
+| Mainnet | after preprod | | `deployments/mainnet.json` |
 
 Each record lists the script hashes, their reference UTxOs and the registry
-([format](deployments/README.md)). The procedure is in [docs/RUNBOOK.md](docs/RUNBOOK.md).
+([format](deployments/README.md)). `scripts/deploy` deploys and verifies them; the procedure is in
+[docs/RUNBOOK.md](docs/RUNBOOK.md).
 
 ## Same rules as the CosmWasm escrow
 
@@ -278,7 +279,7 @@ a refundable ADA deposit and immutable scripts. The full list is in
 ## Roadmap
 
 - [x] Escrow 0.1.0: registry and five campaign scripts, 150 tests
-- [ ] Preprod deployment
+- [x] Preprod deployment
 - [ ] Integration in Dyma UTXO: Studio funding, earner claims, Admin registry tools
 - [ ] Mainnet deployment
 - [ ] CIP-68 reputation badge
