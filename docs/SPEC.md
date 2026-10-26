@@ -217,5 +217,11 @@ it soulbound in effect; a newer claim retires the older reference. Badges carry 
 the boost a distribution applies comes from Dyma's records, as on Cosmos.
 
 Differences from the CosmWasm contract: a claim cannot burn a user token held in someone else's
-wallet, so the older user token stays as an orphan without a reference; `revoke_badge` burns the
-reference (unused attestations of the account expire within 15 minutes); there is no IBC bridge.
+wallet. Dyma's claim transaction burns the older user token when the claiming wallet still holds it
+(the mint policy lets a claim burn retired badges); anywhere else it stays as an orphan without a
+reference. `revoke_badge` burns the reference (unused attestations of the account expire within 15
+minutes); there is no IBC bridge.
+
+A badge's metadata (name, image, description) is copied from the configuration when it is minted
+and never changes. After an `UpdateConfig` that changes a tier's artwork, the earner claims the same
+tier again to get it: the new claim supersedes the older reference like an upgrade.
