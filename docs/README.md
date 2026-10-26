@@ -19,6 +19,7 @@ Pick a reading order that fits your role:
 
 | Term | Meaning |
 |---|---|
+| **Badge** | A Dyma Reputation badge: a CIP-68 reference token at the badge script (its data) and a user token in the owner's wallet. It counts only while the user token sits with the owner. |
 | **Allocation** | Who earned what in a campaign: sorted `(key, weight)` entries committed by the operator. |
 | **Campaign key** | The 28-byte identifier of a funding attempt: `blake2b_224(serialise_data(seed))`. It names the campaign's tokens. |
 | **Challenge window** | The time after finalize during which the owner can dispute and the guardian can reject the allocation. Nothing is paid before it closes. |

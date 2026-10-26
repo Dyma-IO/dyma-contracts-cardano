@@ -81,7 +81,8 @@ on chain whatever happens off chain:
 ## Architecture
 
 A Cardano transaction, and so any script, is capped at 16 KB. The escrow is therefore split into
-five Plutus V3 scripts plus a registry, each deployed once as a reference script.
+five Plutus V3 scripts plus a registry, each deployed once as a reference script. The reputation
+badges are a sixth, separate script ([SPEC §10](docs/SPEC.md#10-reputation-badges-cip-68)).
 
 ```mermaid
 flowchart LR
@@ -123,6 +124,7 @@ flowchart LR
 | [`campaign_payout`](validators/campaign_payout.ak) | withdraw | reveal into claim shards, shard closes, completion | 13.1 KB |
 | [`campaign_admin`](validators/campaign_admin.ak) | withdraw | pauses, ownership transfers, clock checkpoints | 10.6 KB |
 | [`campaign_shard`](validators/campaign_shard.ak) | spend | claim shards: claims and closes | 9.3 KB |
+| [`reputation`](validators/reputation.ak) | mint, spend | reputation badges (CIP-68): attested claims, upgrades, revocation, with their configuration | 5.6 KB |
 
 For payouts and admin actions, `campaign_state` delegates to `campaign_payout` or `campaign_admin`
 through a zero-ADA withdrawal in the same transaction (the "withdraw zero" pattern). Campaign
@@ -233,7 +235,7 @@ Requirements: [Aiken](https://aiken-lang.org) **v1.1.24** (`aikup install v1.1.2
 Node.js 20 or later is needed only to re-sign the test ticket.
 
 ```bash
-aiken check -D                              # 150 tests: scenarios, ADA pools, registry, math vectors, budgets
+aiken check -D                              # 172 tests: scenarios, ADA pools, registry, badges, math vectors, budgets
 python3 scripts/test-report.py -t silent    # memory and CPU of every test against the transaction limits
 python3 scripts/gen-math-vectors.py --check # the math tests match fixtures/escrow-math.json
 aiken build --trace-level silent            # rebuilds plutus.json exactly as deployed
@@ -278,11 +280,11 @@ a refundable ADA deposit and immutable scripts. The full list is in
 
 ## Roadmap
 
-- [x] Escrow 0.1.0: registry and five campaign scripts, 150 tests
+- [x] Escrow 0.1.0: registry and five campaign scripts
 - [x] Preprod deployment
 - [ ] Integration in Dyma UTXO: Studio funding, earner claims, Admin registry tools
 - [ ] Mainnet deployment
-- [ ] CIP-68 reputation badge
+- [x] CIP-68 reputation badges (contract)
 
 ## Contributing
 

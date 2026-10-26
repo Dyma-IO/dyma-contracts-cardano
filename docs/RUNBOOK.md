@@ -12,6 +12,7 @@ Interface: [SPEC.md](SPEC.md). Threats: [THREAT_MODEL.md](THREAT_MODEL.md).
 | Operator | payment key | Dyma's API (encrypted credential or AWS KMS Ed25519) | commits, finalize, sync; pays the operator's fees |
 | Pauser | payment key | Dyma's API | rate-limited pauses |
 | Ticket signer | raw Ed25519 key | Dyma's API | signs campaign tickets off chain |
+| Badge attester | raw Ed25519 key | Dyma's API | signs reputation badge attestations off chain |
 | Treasury | address | Dyma | receives fees (and plan payments, as a separate account) |
 | Deployer | wallet | whoever deploys | pays the deployment; holds nothing afterwards |
 
@@ -72,6 +73,11 @@ node verify.mjs --network preprod
 
 `--plan` prints the script hashes, addresses and deposits, and has a node evaluate the registry
 transaction. On mainnet, the deployment also needs `--confirm-mainnet`.
+
+The reputation badges deploy the same way from `deployments/<network>.reputation.config.json`
+(governance, attester public key, collection, tiers): `node deploy-reputation.mjs --network preprod
+--wallet <deployer mnemonic file> [--plan]` mints the configuration NFT, then stores the script as a
+reference script at its own address, and writes `deployments/<network>.reputation.json`.
 
 ## 4. Operating
 

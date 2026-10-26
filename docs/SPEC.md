@@ -184,3 +184,38 @@ instead of block time; single-use tickets instead of a factory attempt registry;
 commits revealed into 20-entry claim shards; a refundable ADA deposit; up to 2 ADA of the deposit
 with a fee output; immutable scripts; 16 global pauses of history; strays rescued by governance;
 reasons counted in UTF-8 characters (bytes ≤ 4 × 280).
+
+## 10. Reputation badges (CIP-68)
+
+`validators/reputation.ak` (with `lib/dyma/badge.ak`) is the Cardano counterpart of the CosmWasm
+`dyma-reputation`: Dyma computes reputation off chain and signs attestations; the script only
+checks them. One script, parameterised by a seed output, is the badges' policy id and the address
+that holds the configuration and every badge reference (5.6 KB).
+
+| Datum | Holder | Content |
+|---|---|---|
+| `ReputationConfig` | the UTxO with the `dyma-reputation` NFT | governance multisig, `attester` (32-byte Ed25519), `paused`, collection name and description, `tiers` (1 to 32, ascending by tier and minimum score, boosts 10 000 to 50 000 bps never decreasing, images ≤ 256 bytes) |
+| `Cip68Datum` | a badge reference (CIP-67 label 100) | `metadata` (`name` = collection · tier name, `image`, `description`, `tier`, `tier_name`, `score`, `boost_bps`, `account`, `issued_at`), `version` 1, `extra` = `BadgeState { account, owner, tier, score, boost_bps, nonce, issued_at }` |
+
+An `Attestation { version, policy, account, owner, tier, score, nonce, issued_at, expires_at, seed }`
+is signed with Ed25519 over `blake2b_256(serialise_data(attestation))`. A badge's asset names are
+the CIP-67 labels 100 and 222 followed by `blake2b_224(serialise_data(seed))`.
+
+| Redeemer | Who | Effect |
+|---|---|---|
+| mint `Init` | whoever spends the seed | the configuration NFT, once, into a valid configuration at the script |
+| mint `Claim { attestation, signature }` | the attested `owner` (signature) | not paused; the attester's signature; `policy` is this script; the seed is spent (single use); `upper < expires_at`, `issued_at < expires_at`, `issued_at ≤ lower + 10 min`; the tier exists and `score ≥ min_score`; mints exactly the pair (other names of the policy may only burn); the reference goes to the script with exactly its ADA and token and the expected `Cip68Datum` |
+| mint `Burn` | holders | burning only (a holder burns its user token) |
+| spend `UpdateConfig` | governance (and a new governance) | any valid configuration; the NFT stays at the script |
+| spend `Retire` (a reference) | a newer claim of the same account in the same transaction (`nonce` greater), or governance (revocation) | the reference token is burned |
+| spend `Retire` (anything else) | governance | strays sent to the script address |
+
+**Validity rule** (for Dyma and anyone reading badges): an account's badge is its reference with
+the highest nonce, and it counts only while its user token (label 222, same name) sits at an
+address whose payment key is the reference's `owner`. Moving the token voids the badge, which makes
+it soulbound in effect; a newer claim retires the older reference. Badges carry no economic power:
+the boost a distribution applies comes from Dyma's records, as on Cosmos.
+
+Differences from the CosmWasm contract: a claim cannot burn a user token held in someone else's
+wallet, so the older user token stays as an orphan without a reference; `revoke_badge` burns the
+reference (unused attestations of the account expire within 15 minutes); there is no IBC bridge.

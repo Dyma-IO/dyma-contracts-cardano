@@ -1,8 +1,8 @@
 # Threat model: Dyma escrow on Cardano
 
-Scope: the `registry` and the five campaign escrow validators (`campaign_policy`,
-`campaign_state`, `campaign_payout`, `campaign_admin`, `campaign_shard`), their deployment, and
-the off-chain roles that drive them. Rules: [ESCROW_RULES.md](ESCROW_RULES.md). Interface: [SPEC.md](SPEC.md).
+Scope: the `registry`, the five campaign escrow validators (`campaign_policy`, `campaign_state`,
+`campaign_payout`, `campaign_admin`, `campaign_shard`) and the `reputation` badges, their
+deployment, and the off-chain roles that drive them. Rules: [ESCROW_RULES.md](ESCROW_RULES.md). Interface: [SPEC.md](SPEC.md).
 Procedures: [RUNBOOK.md](RUNBOOK.md). **No external audit yet**: this document is its input.
 
 ## 1. What is protected
@@ -61,6 +61,9 @@ Procedures: [RUNBOOK.md](RUNBOOK.md). **No external audit yet**: this document i
 | T14 | Registry history too short for an old campaign | the clock leaves unknown global pauses out (like an unreadable CosmWasm factory) and never goes back; the operator `Sync`s campaigns after global pauses |
 | T15 | Minimum-UTxO rises after creation | the revealer may add ADA to shards (returned to the owner); deposits are computed with a margin |
 | T16 | Fee output drains the owner's deposit | the treasury output may carry at most 2 ADA beyond the fee (Cardano requires ADA in every output); none when the fee is zero (Dyma's default) |
+| T17 | A forged or replayed badge attestation | Ed25519 signature by the configuration's attester over the attestation's `serialise_data`; the attestation names an input the claim must spend (single use), the owner must sign, and it expires (15 minutes) |
+| T18 | A badge passed on to another wallet keeps counting | a badge counts only while its user token sits with the reference's `owner` (payment key); moving it voids it |
+| T19 | Several references for one account | readers take the highest nonce; a newer claim can retire older references in the same transaction; governance can revoke any |
 
 ## 4. Residual risks
 

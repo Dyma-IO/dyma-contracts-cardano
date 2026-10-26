@@ -17,6 +17,10 @@ keep the version they were created with.
 - `scripts/deploy`: a resumable deployment (registry, reference scripts, reward accounts) and a
   verification that reads everything back from the chain.
 - Preprod deployment of 0.1.0 (`deployments/preprod.json`).
+- `reputation`: Dyma Reputation badges (CIP-68), the counterpart of the CosmWasm `dyma-reputation`:
+  a one-shot configuration (governance, Ed25519 attester, tiers), claims from single-use attestations
+  signed by Dyma and the owner, upgrades that retire the older badge, revocation by governance.
+  22 tests. `scripts/deploy/deploy-reputation.mjs` deploys it.
 
 ### Changed
 

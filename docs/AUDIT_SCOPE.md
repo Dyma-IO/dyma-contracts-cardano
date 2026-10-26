@@ -35,6 +35,7 @@ Line counts exclude blank lines and comments, and include in-file tests.
 | `lib/dyma/holdings.ak` | 97 | exact values, deposits, pools |
 | `lib/dyma/registry_rules.ak` | 94 | registry validity, role separation, privileged keys |
 | `lib/dyma/auth.ak`, `time.ak`, `phase.ak`, `text.ak`, `constants.ak` | 221 | signatures and multisigs, validity ranges, phases, text checks, hard limits |
+| `validators/reputation.ak`, `lib/dyma/badge.ak` | 360 | reputation badges (CIP-68): configuration NFT, attested claims, retirement of older badges, revocation |
 | `plutus.json`, `aiken.toml`, `aiken.lock` | | blueprint, compiler and dependency pins |
 
 Total: 3,024 lines (459 in validators, 2,565 in `lib/dyma`).
@@ -88,7 +89,7 @@ Deliberate design decisions, not findings, are listed in
 
 ```bash
 aikup install v1.1.24
-aiken check -D                              # all 150 tests
+aiken check -D                              # all 172 tests
 python3 scripts/test-report.py -t silent    # memory and CPU per test
 python3 scripts/gen-math-vectors.py --check
 aiken build --trace-level silent && git diff --exit-code plutus.json
@@ -100,6 +101,7 @@ aiken build --trace-level silent && git diff --exit-code plutus.json
 | `validators/registry.test.ak` | 18 | one-shot mint, configuration updates and quorums, global pauses, history, strays |
 | `validators/ada_pool.test.ak` | 7 | ADA campaigns (pool and deposit in lovelace) and double satisfaction across two campaigns |
 | `validators/budget.test.ak` | 7 | execution budgets of the largest transactions |
+| `validators/reputation.test.ak` | 22 | badges: configuration, claims and their refusals (signature, owner, seed, pause, expiry, score, metadata, extra mints), upgrades, revocation, burns, strays |
 | `lib/dyma/math_vectors.ak` | 19 | the math vectors shared with the CosmWasm escrow (generated) |
 | `lib/dyma/clock.ak` | 10 | the escrow clock, ported from the CosmWasm tests |
 | `lib/dyma/allocation.ak`, `math.ak`, `text.ak`, `time.ak`, `holdings.ak` | 11 | unit tests and a property test of the payout bounds |
