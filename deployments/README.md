@@ -5,8 +5,10 @@ procedure is in [RUNBOOK §3](../docs/RUNBOOK.md#3-deploying).
 
 | Network | Configuration | Record | Status |
 |---|---|---|---|
-| Preprod | `preprod.config.json` | `preprod.json` | in preparation |
-| Mainnet | `mainnet.config.json` | `mainnet.json` | after preprod |
+| Preprod: escrow | `preprod.config.json` | `preprod.json` | deployed 2026-10-26, verified |
+| Preprod: reputation badges | `preprod.reputation.config.json` | `preprod.reputation.json` | deployed 2026-10-26 |
+| Mainnet: escrow | `mainnet.config.json` | `mainnet.json` | not deployed yet |
+| Mainnet: reputation badges | `mainnet.reputation.config.json` | `mainnet.reputation.json` | not deployed yet |
 
 ## Configuration: `<network>.config.json`
 
