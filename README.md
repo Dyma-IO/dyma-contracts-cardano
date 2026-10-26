@@ -257,10 +257,15 @@ The largest transactions, as a share of the mainnet limits per transaction (16.5
 
 ## Deployments
 
-| Network | Status | Registry policy | Record |
+| Escrow | Status | Registry policy | Record |
 |---|---|---|---|
 | Preprod | deployed | [`097c1655…0a97`](https://preprod.cardanoscan.io/tokenPolicy/097c165513145549ec3d36549c6b2c0f46ecf19d4c726d10eefa0a97) | [`deployments/preprod.json`](deployments/preprod.json) |
 | Mainnet | after preprod | | `deployments/mainnet.json` |
+
+| Reputation badges | Status | Policy | Record |
+|---|---|---|---|
+| Preprod | deployed | [`f06ba45c…a90fe`](https://preprod.cardanoscan.io/tokenPolicy/f06ba45c6e2f4957b3002536ddcf66111d12191ba1962c3d2aae90fe) | [`deployments/preprod.reputation.json`](deployments/preprod.reputation.json) |
+| Mainnet | after preprod | | `deployments/mainnet.reputation.json` |
 
 Each record lists the script hashes, their reference UTxOs and the registry
 ([format](deployments/README.md)). `scripts/deploy` deploys and verifies them; the procedure is in
