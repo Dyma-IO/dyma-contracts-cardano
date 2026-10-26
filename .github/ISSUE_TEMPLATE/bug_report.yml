@@ -1,0 +1,42 @@
+name: Bug report
+description: Something in the contracts, tests or documents is wrong (not a security problem)
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Security problems must not be reported here.** Follow [SECURITY.md](https://github.com/Dyma-IO/dyma-contracts-cardano/blob/main/SECURITY.md) instead.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What is wrong, and where (script, module, document)?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: Steps, a transaction, or better, an Aiken test that shows the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What should happen instead, with a reference to the rules or the spec if you can.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: e.g. 0.1.0 or 83c5d84
+  - type: dropdown
+    id: network
+    attributes:
+      label: Network
+      options:
+        - Not network-specific
+        - Preprod
+        - Mainnet

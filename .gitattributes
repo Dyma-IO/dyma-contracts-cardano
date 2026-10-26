@@ -1,0 +1,6 @@
+* text=auto eol=lf
+
+# Generated: collapsed in diffs, left out of language statistics.
+plutus.json linguist-generated=true
+aiken.lock linguist-generated=true
+lib/dyma/math_vectors.ak linguist-generated=true

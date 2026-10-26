@@ -1,7 +1,8 @@
 # Threat model: Dyma escrow on Cardano
 
-Scope: the `registry` and `campaign_escrow` validators, their deployment, and the off-chain roles
-that drive them. Rules: [ESCROW_RULES.md](ESCROW_RULES.md). Interface: [SPEC.md](SPEC.md).
+Scope: the `registry` and the five campaign escrow validators (`campaign_policy`,
+`campaign_state`, `campaign_payout`, `campaign_admin`, `campaign_shard`), their deployment, and
+the off-chain roles that drive them. Rules: [ESCROW_RULES.md](ESCROW_RULES.md). Interface: [SPEC.md](SPEC.md).
 Procedures: [RUNBOOK.md](RUNBOOK.md). **No external audit yet**: this document is its input.
 
 ## 1. What is protected

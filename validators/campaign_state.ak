@@ -3,8 +3,8 @@
 //// validated by `campaign_payout`, pauses, ownership and clock checkpoints by `campaign_admin`:
 //// the chosen one must run in the same transaction (a zero-ADA withdrawal from its script).
 //// Parameterised by the registry's policy id, the campaign token policy and the shard, payout and
-//// admin scripts, so its hash names the whole escrow version. Anything else sent to its address leaves only with the registry
-//// governance's `Rescue`.
+//// admin scripts, so its hash names the whole escrow version. Anything else sent to its address
+//// leaves only with the registry governance's `Rescue`.
 
 use aiken/collection/dict
 use aiken/collection/pairs

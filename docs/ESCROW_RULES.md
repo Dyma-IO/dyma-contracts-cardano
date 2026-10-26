@@ -6,7 +6,7 @@ exist:
 | Ecosystem | Repository | Contracts |
 |---|---|---|
 | Cosmos (Safrochain) | `Dyma-IO/dyma-contracts` | CosmWasm `dyma-escrow-factory` and `dyma-campaign-escrow` (0.2.0, claim mode) |
-| Cardano (Dyma UTXO) | `Dyma-IO/dyma-contracts-cardano` | Aiken `registry` and `campaign_escrow` |
+| Cardano (Dyma UTXO) | `Dyma-IO/dyma-contracts-cardano` | Aiken `registry` and the campaign escrow scripts `campaign_policy`, `campaign_state`, `campaign_payout`, `campaign_admin`, `campaign_shard` (0.1.0) |
 
 This file is the source of truth. It lives in `dyma-contracts` and `dyma-contracts-cardano` keeps
 a byte-identical copy, together with the shared math vectors `fixtures/escrow-math.json`. Any

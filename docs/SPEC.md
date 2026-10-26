@@ -5,9 +5,6 @@ This document describes the contracts as implemented in this repository (`valida
 the CosmWasm repository's file; this document says how Cardano implements them. Where this document
 and the code disagree, the code is right and this document is a bug.
 
-Status: **not audited.** Do not hold third-party funds beyond a small canary before an external
-audit.
-
 ## 1. Topology
 
 ```
