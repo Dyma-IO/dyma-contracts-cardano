@@ -18,49 +18,49 @@
       "name": "Explorer",
       "min_score": 250,
       "boost_bps": 10500,
-      "image": "https://api.dymautxo.io/v1/reputation/badges/explorer.svg"
+      "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/explorer.png"
     },
     {
       "tier": 2,
       "name": "Contributor",
       "min_score": 1000,
       "boost_bps": 11000,
-      "image": "https://api.dymautxo.io/v1/reputation/badges/contributor.svg"
+      "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/contributor.png"
     },
     {
       "tier": 3,
       "name": "Builder",
       "min_score": 3000,
       "boost_bps": 12000,
-      "image": "https://api.dymautxo.io/v1/reputation/badges/builder.svg"
+      "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/builder.png"
     },
     {
       "tier": 4,
       "name": "Trailblazer",
       "min_score": 7500,
       "boost_bps": 13500,
-      "image": "https://api.dymautxo.io/v1/reputation/badges/trailblazer.svg"
+      "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/trailblazer.png"
     },
     {
       "tier": 5,
       "name": "Champion",
       "min_score": 15000,
       "boost_bps": 15000,
-      "image": "https://api.dymautxo.io/v1/reputation/badges/champion.svg"
+      "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/champion.png"
     },
     {
       "tier": 6,
       "name": "Legend",
       "min_score": 30000,
       "boost_bps": 17500,
-      "image": "https://api.dymautxo.io/v1/reputation/badges/legend.svg"
+      "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/legend.png"
     },
     {
       "tier": 7,
       "name": "Mythic",
       "min_score": 60000,
       "boost_bps": 20000,
-      "image": "https://api.dymautxo.io/v1/reputation/badges/mythic.svg"
+      "image": "https://raw.githubusercontent.com/Dyma-IO/dyma-contracts-cardano/d442c153bd0f9dd22198fdbb737c8c405d416933/assets/badges/mythic.png"
     }
   ]
 }

@@ -18,5 +18,7 @@ is `python3 scripts/test-report.py -t silent -m budget`.
 |---|---|
 | [`deploy/deploy.mjs`](deploy/deploy.mjs) | Deploys the registry, the reference scripts and the reward accounts, and writes `deployments/<network>.json`. `--plan` submits nothing. A re-run resumes an interrupted deployment. |
 | [`deploy/verify.mjs`](deploy/verify.mjs) | Reads a deployment back from the chain and checks it against its record. |
+| [`deploy/deploy-reputation.mjs`](deploy/deploy-reputation.mjs) | Deploys the reputation badges (configuration NFT and reference script) and writes `deployments/<network>.reputation.json`. |
+| [`deploy/update-reputation-config.mjs`](deploy/update-reputation-config.mjs) | Replaces a deployed badge configuration with `deployments/<network>.reputation.config.json` (`UpdateConfig`): governance signs with its threshold of keys (`--signer`), the deployer pays. Badges already minted keep their configuration; new claims and upgrades follow the new one. `--plan` submits nothing. |
 
 The procedure is in [RUNBOOK §3](../docs/RUNBOOK.md#3-deploying).
