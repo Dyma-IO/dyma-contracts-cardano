@@ -88,9 +88,13 @@ reference script at its own address, and writes `deployments/<network>.reputatio
 - **Global pause**: the pauser (rate-limited) or the guardian or governance, at most `max_pause_secs`
   at a time. After global pauses, Dyma's API checkpoints open campaigns (`Sync`) so that none
   depends on more than the 16 pauses the registry keeps.
-- **Multisig transactions** (guardian, governance): Dyma's Admin exports the unsigned transaction
-  (CBOR); each signer adds a witness with its wallet (Eternl's multisig flow or `cardano-cli
-  transaction witness`); the assembled transaction is submitted by anyone.
+- **Guardian transactions** (reject, resolve, cancel, pause, unpause): Dyma's Admin prepares the
+  transaction for the chosen guardian signers (at least the threshold) and shows its CBOR; each
+  signer adds a witness, from a CIP-30 wallet in Admin or with `cardano-cli transaction witness`;
+  at the threshold Dyma's operator signs as fee payer and submits. Signers have six hours (one
+  hour for a pause).
+- **Governance transactions** (`UpdateConfig`, `Rescue`): the same witness flow; Admin does not
+  build them yet, so they are assembled with the deploy tooling's libraries and `cardano-cli`.
 - **Strays**: anything sent by mistake to the escrow or shard addresses leaves with a governance
   `Rescue`; to the registry address, with a governance `UpdateConfig` in the same transaction.
 
